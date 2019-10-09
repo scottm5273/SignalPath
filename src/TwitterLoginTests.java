@@ -32,7 +32,7 @@ public class TwitterLoginTests {
 	@Test
 	public void validUserAndPassword() {
 		driver.get(baseUrl);
-		login("validUsername", "validPassword"); //replace w/ your Twitter uname and pwd
+		login("sootedpair", "r3dsk1ns"); //replace w/ your Twitter uname and pwd
 		assertEquals(driver.findElement(By.cssSelector(homeTextCss)).getText(), "Home");
 	}
 	
@@ -40,7 +40,7 @@ public class TwitterLoginTests {
 	public void noUserAndNoPassword() {
 		driver.get(baseUrl);
 		login("", "");
-		assertEquals(driver.getCurrentUrl(), "https://twitter.com/login/error");
+		assertTrue(driver.getCurrentUrl().contains("login/error"));
 		assertTrue(isErrorDisplayed());
 	}
 
@@ -48,7 +48,7 @@ public class TwitterLoginTests {
 	public void invalidUserAndPassword() {
 		driver.get(baseUrl);
 		login("aizvigly", "aizvigly");
-		assertEquals(driver.getCurrentUrl(), "https://twitter.com/login/error");
+		assertTrue(driver.getCurrentUrl().contains("login/error"));
 		assertTrue(isErrorDisplayed());
 	}
 	
@@ -56,7 +56,7 @@ public class TwitterLoginTests {
 	public void validUserAndInvalidPassword() {
 		driver.get(baseUrl);
 		login("sootedpair", "correct horse battery staple");
-		assertEquals(driver.getCurrentUrl(), "https://twitter.com/login/error");
+		assertTrue(driver.getCurrentUrl().contains("login/error"));
 		assertTrue(isErrorDisplayed());
 	}
 	
@@ -64,7 +64,7 @@ public class TwitterLoginTests {
 	public void validUserAndNoPassword() {
 		driver.get(baseUrl);
 		login("sootedpair", "");
-		assertEquals(driver.getCurrentUrl(), "https://twitter.com/login/error");
+		assertTrue(driver.getCurrentUrl().contains("login/error"));
 		assertTrue(isErrorDisplayed());
 	}
 
