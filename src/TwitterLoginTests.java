@@ -32,7 +32,7 @@ public class TwitterLoginTests {
 	@Test
 	public void validUserAndPassword() {
 		driver.get(baseUrl);
-		login("sootedpair", "r3dsk1ns"); //replace w/ your Twitter uname and pwd
+		login("username", "password"); //replace w/ your Twitter uname and pwd
 		assertEquals(driver.findElement(By.cssSelector(homeTextCss)).getText(), "Home");
 	}
 	
